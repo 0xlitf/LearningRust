@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { invoke } from "@tauri-apps/api/core";
+import { onMounted, nextTick, getCurrentInstance } from 'vue';
 
 const greetMsg = ref("");
 const name = ref("");
@@ -8,12 +9,30 @@ const name = ref("");
 async function greet() {
   // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
   greetMsg.value = await invoke("greet", { name: name.value });
+
+  const greeting = await invoke('get_greeting');
+  console.log("greeting: " + greeting);
+
 }
+
+onMounted(() => {
+  nextTick(() => {
+    const appContent = document.getElementById('app')?.innerHTML;
+    console.log('渲染内容:', appContent || '#app 不存在或为空');
+  });
+});
+
+const handleClick = () => {
+  console.log('标题被点击了！');
+  // 可以调用 Tauri 命令或其他逻辑
+  // invoke('some_command');
+};
+
 </script>
 
 <template>
   <main class="container">
-    <h1>Welcome to Tauri + Vue</h1>
+    <h1 @click="handleClick">Welcome to Tauri + Vue</h1>
 
     <div class="row">
       <a href="https://vitejs.dev" target="_blank">
