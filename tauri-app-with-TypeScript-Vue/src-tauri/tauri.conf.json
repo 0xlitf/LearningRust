@@ -13,6 +13,8 @@
     "windows": [
       {
         "title": "tauri-app-with-typescript-vue",
+        "label": "main",
+        "decorations": false,
         "width": 800,
         "height": 600
       }
