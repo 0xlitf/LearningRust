@@ -14,7 +14,8 @@
       {
         "title": "tauri-app-with-typescript-vue",
         "label": "main",
-        "decorations": false,
+        "decorations": true,
+        "transparent": false,
         "width": 800,
         "height": 600
       }
