@@ -3,6 +3,9 @@ import { ref } from "vue";
 import { invoke } from "@tauri-apps/api/core";
 import { onMounted, nextTick, getCurrentInstance } from 'vue';
 
+import { listen } from '@tauri-apps/api/event';
+
+
 const greetMsg = ref("");
 const name = ref("");
 
@@ -13,6 +16,19 @@ async function greet() {
   const greeting = await invoke('get_greeting');
   console.log("greeting: " + greeting);
 
+  const dl = await invoke('download', { url: 'https://tauri.studio/assets/img/logo.svg' });
+
+// 监听窗口事件
+//   const start = listen<string>('download-started', (event) => {
+//     console.log('start:', event.payload);
+//   });
+//   const progress = listen<string>('download-started', (event) => {
+//     console.log('progress:', event.payload);
+//   });
+//   const finished = listen<string>('download-started', (event) => {
+//     console.log('finished:', event.payload);
+//   });
+
 }
 
 onMounted(() => {
@@ -20,6 +36,8 @@ onMounted(() => {
     const appContent = document.getElementById('app')?.innerHTML;
     console.log('渲染内容:', appContent || '#app 不存在或为空');
   });
+
+
 });
 
 const handleClick = () => {
