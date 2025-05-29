@@ -1,3 +1,5 @@
+
+#![allow(unused)]
 fn main() {
-    println!("Hello, world!");
+    const THREE_HOURS_IN_SECONDS: u32 = 60 * 60 * 3;
 }
