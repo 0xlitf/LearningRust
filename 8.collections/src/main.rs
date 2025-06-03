@@ -94,15 +94,15 @@ fn main() {
     // println!("s1: {}", s1);
     println!("s2: {}", s2);
 
-    let s1 = "您好";
-    let s2 = "您好啊";
+    let s1 = "12";
+    let s2 = "123";
 
-    println!("\"您好\" 的字节数: {}", s1.len()); // 应输出 6
-    println!("\"您好啊\" 的字节数: {}", s2.len()); // 应输出 9
+    println!("\"12\" 的字节数: {}", s1.len()); // 应输出 6
+    println!("\"123\" 的字节数: {}", s2.len()); // 应输出 9
 
     // 打印每个字符的字节表示
-    println!("\"您好\" 的字节表示: {:x?}", s1.as_bytes());
-    println!("\"您好啊\" 的字节表示: {:x?}", s2.as_bytes());
+    println!("\"12\" 的字节表示: {:x?}", s1.as_bytes());
+    println!("\"123\" 的字节表示: {:x?}", s2.as_bytes());
 
     loop {
         let mut input :String = String::new();
