@@ -1,12 +1,14 @@
 #![allow(unused)]
+use std::io;
+use std::io::Read;
 use std::io::ErrorKind;
+use std::fs::File;
 
 fn main() {
     let v = vec![1, 2, 3];
 
     // v[99];
 
-    use std::fs::File;
     let f = File::open("hello.txt");
     println!("{:?}", f);
 
@@ -40,4 +42,21 @@ fn main() {
         }
     });
 
+    read_username_from_file();
+
+}
+
+// use std::error::Error;
+// fn main() -> Result<(), Box<dyn Error>> {
+//     let f = File::open("hello.txt")?;
+//
+//     Ok(())
+// }
+
+fn read_username_from_file() -> Result<String, io::Error> {
+    let mut s = String::new();
+
+    File::open("hello.txt")?.read_to_string(&mut s)?;
+
+    Ok(s)
 }
