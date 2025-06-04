@@ -43,7 +43,11 @@ fn main() {
     });
 
     read_username_from_file();
+    
+    
+    use std::net::IpAddr;  // 引入 IpAddr 类型
 
+    let home: IpAddr = "127.0.0.1".parse().unwrap();
 }
 
 // use std::error::Error;
