@@ -4,7 +4,9 @@ fn main() {
     pub trait Summary {
         // trait 体中可以有多个方法：一行一个方法签名且都以分号结尾。
         fn summarize(&self) -> String;
-        fn publish(&self) -> String;
+        
+        // 必须实现所有的方法
+        // fn publish(&self) -> String;
     }
 
     pub struct NewsArticle {
@@ -32,4 +34,17 @@ fn main() {
             format!("{}: {}", self.username, self.content)
         }
     }
+
+    
+    {
+        let r;
+
+        {
+            let x = 5;
+            r = &x;
+        }
+
+        println!("r: {}", r);
+    }
+
 }
